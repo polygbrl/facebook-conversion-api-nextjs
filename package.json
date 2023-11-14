@@ -29,7 +29,7 @@
   "homepage": "https://github.com/RivercodeAB/facebook-conversion-api-nextjs#readme",
   "dependencies": {
     "formdata-node": "^4.4.1",
-    "universal-cookie": "^4.0.4",
+    "universal-cookie": "^6.1.1",
     "uuid": "^9.0.0"
   },
   "peerDependencies": {

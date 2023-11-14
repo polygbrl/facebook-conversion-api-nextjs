@@ -69,7 +69,7 @@ const fbEvent = (event: FBEvent): void => {
       testEventCode: event.testEventCode,
     });
 
-    fetch('/api/fb-events', {
+    fetch(process.env.FB_EVENTS_ENDPOINT ?? '/api/fb-events', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
