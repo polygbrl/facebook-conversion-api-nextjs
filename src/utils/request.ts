@@ -7,15 +7,12 @@ import Cookies from 'universal-cookie';
  * @param req
  */
 const getClientIpAddress = (req: NextApiRequest): string => {
-  const ipAddress = (req.headers['x-real-ip'] || req.socket.remoteAddress);
-
-  if (ipAddress) {
-    return String(ipAddress);
-  }
-
-  const xForwardedFor = req.headers['x-forwarded-for'] as string ?? '';
-
-  return xForwardedFor.split(',')[0];
+    return (
+        req.socket.remoteAddress ||
+        <string>req.headers['x-real-ip'] ||
+        <string>req.headers['cf-connecting-ip'] ||
+        <string>req.headers['x-forwarded-for'] || ''
+    ).split(',')[0];
 };
 
 /**
