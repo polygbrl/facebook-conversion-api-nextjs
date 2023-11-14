@@ -38,6 +38,7 @@ const fbEvent = (event) => {
         (0, debug_1.default)(`Client Side Event ID: ${eventId}`);
     }
     setTimeout(() => {
+        var _a;
         const serverSidePayload = JSON.stringify({
             eventName: event.eventName,
             eventId,
@@ -55,7 +56,7 @@ const fbEvent = (event) => {
             sourceUrl: window.location.href,
             testEventCode: event.testEventCode,
         });
-        fetch(process.env.FB_EVENTS_ENDPOINT ? process.env.FB_EVENTS_ENDPOINT : '/api/fb-events', {
+        fetch((_a = process.env.NEXT_PUBLIC_FB_EVENTS_ENDPOINT) !== null && _a !== void 0 ? _a : '/api/fb-events', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
