@@ -11,13 +11,10 @@ const universal_cookie_1 = __importDefault(require("universal-cookie"));
  * @param req
  */
 const getClientIpAddress = (req) => {
-    var _a;
-    const ipAddress = (req.headers['x-real-ip'] || req.socket.remoteAddress);
-    if (ipAddress) {
-        return String(ipAddress);
-    }
-    const xForwardedFor = (_a = req.headers['x-forwarded-for']) !== null && _a !== void 0 ? _a : '';
-    return xForwardedFor.split(',')[0];
+    return (req.socket.remoteAddress ||
+        req.headers['x-real-ip'] ||
+        req.headers['cf-connecting-ip'] ||
+        req.headers['x-forwarded-for'] || '').split(',')[0];
 };
 exports.getClientIpAddress = getClientIpAddress;
 /**
