@@ -11,8 +11,7 @@ const universal_cookie_1 = __importDefault(require("universal-cookie"));
  * @param req
  */
 const getClientIpAddress = (req) => {
-    return (req.socket.remoteAddress ||
-        req.headers['x-real-ip'] ||
+    return (req.headers['x-real-ip'] ||
         req.headers['cf-connecting-ip'] ||
         req.headers['x-forwarded-for'] || '').split(',')[0];
 };
