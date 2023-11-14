@@ -8,11 +8,11 @@ import Cookies from 'universal-cookie';
  */
 const getClientIpAddress = (req: NextApiRequest): string => {
     return (
-        req.socket.remoteAddress ||
         <string>req.headers['x-real-ip'] ||
         <string>req.headers['cf-connecting-ip'] ||
         <string>req.headers['x-forwarded-for'] || ''
     ).split(',')[0];
+
 };
 
 /**
