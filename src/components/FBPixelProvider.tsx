@@ -3,14 +3,15 @@ import { useRouter } from 'next/router';
 import { fbPageView } from '../conversion-api';
 
 type Props = {
-  children: React.ReactNode
+  children: React.ReactNode,
+  triggerPageView: boolean
 };
 
-const FBPixelProvider = ({ children }: Props) => {
+const FBPixelProvider = ({ children, triggerPageView }: Props) => {
   const router = useRouter();
 
   useEffect(() => {
-    fbPageView();
+    if (triggerPageView) fbPageView();
 
     router.events.on('routeChangeComplete', fbPageView);
     return () => {
